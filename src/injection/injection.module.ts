@@ -32,16 +32,15 @@ const TOKEN = 'token';
      * This will not work:
      *
      * a) If MyService is @Injectable() Nest will not start up. Because it can't determine
-     * the instances to inject into the MyService constructor, even though they are in the
+     * the instances to inject into the MyService constructor, as `useClass` doesn't use the
      * `inject` array.
      *
      * b) If MyService is NOT @Injectable() then Nest will instantiate the object but pass
-     * undefined values to the constructor, even though the args are listed in the `inject`
-     * array.
+     * undefined values to the constructor, as the `inject` array is not used.
      *
-     * So it seems that `useClass` can only be used with @Injectable and where the arguments
-     * to be injected are provided via decorators (ie: @Inject()) instead of the dynamic wiring
-     * of a Customer Provider object (ie: using inject).
+     * `useClass` can only be used with @Injectable and where the arguments to be injected are
+     * specified via decorators (ie: @Inject()) instead of the dynamic wiring of a Customer
+     * Provider object (ie: using inject).
      */
     {
       provide: "MyServiceByClass",
